@@ -4,76 +4,63 @@
 
 <head>
 
-  <!-- Setting page title -->
-  <title>Movie Wish List</title>
-
-  <!-- Establishing character set -->
-  <meta charset="UTF-8">
-
-  <!-- Linking BootStrap-->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-
-  <!-- Linking CSS -->
-  <link rel="stylesheet" type="text/css" href="./assets/css/style.css">
-
-  <!-- Linking Google font -->
-  <link href="https://fonts.googleapis.com/css?family=Chewy" rel="stylesheet">
-
-  <!-- Linking jQuery -->
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
-  <!-- Link to font -->
-  <link href="https://fonts.googleapis.com/css?family=Cabin+Sketch" rel="stylesheet">
+    <title>Movie Wish List</title>
+    <meta charset="UTF-8">
+    <script src="https://www.gstatic.com/firebasejs/5.7.1/firebase.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="./assets/css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Chewy" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Cabin+Sketch" rel="stylesheet">
 
 </head>
 
 <body>
-<!-- Header -->
-<!-- <div id="jumbo" class="jumbotron jumbotron-fluid">
+    <!-- Header -->
+    <!-- <div id="jumbo" class="jumbotron jumbotron-fluid">
     <div class="container">
       <h1 class="display-4"><u>Name of the Project</u></h1>
       <p class="lead">Search Movies ............</p>
     </div>
   </div> -->
 
-  <!-- Search Bar and Button -->
-  <!-- <form id="movie-form" id="form" class="form-inline">
+    <!-- Search Bar and Button -->
+    <!-- <form id="movie-form" id="form" class="form-inline">
     <div class="form-group mx-sm-3 mb-2">
       <label for="movie-input" class="sr-only">Password</label>
       <input id="movie-input" type="text" class="form-control" id="inputPassword2" placeholder="Search a movie...">
     </div>
     <button id="search-movie" type="submit" class="btn btn-primary mb-2">Search</button>
   </form> -->
-  <!-- Header -->
-<div id="jumbo" class="jumbotron jumbotron-fluid">
-    <div class="container">
-      <h1 class="display-4"><u>Movie Wishlist</u></h1>
-      <p class="lead">An easier way for movie lovers.</p>
+
+    <!-- Header -->
+    <div id="jumbo" class="jumbotron jumbotron-fluid">
+        <div class="container">
+            <h1 class="display-4"><u>Movie Wishlist</u></h1>
+            <p class="lead">An easier way for movie lovers.</p>
+        </div>
     </div>
-  </div>
 
-<div id="main-container">
+    <div id="main-container">
+        <div id="search-container">
 
-    <div id="search-container">
-
-        <!-- Header -->
-<!-- <div id="jumbo" class="jumbotron jumbotron-fluid">
+            <!-- Header -->
+            <!-- <div id="jumbo" class="jumbotron jumbotron-fluid">
     <div class="container">
       <h1 class="display-4"><u>Name of the Project</u></h1>
       <p class="lead">Search Movies ............</p>
     </div>
   </div> -->
 
-  <!-- Search Bar and Button -->
-  <form id="movie-form" id="form" class="form-inline">
-    <div class="form-group mx-sm-3 mb-2">
-      <label for="movie-input" class="sr-only">Password</label>
-      <input id="movie-input" type="text" class="form-control" id="inputPassword2" placeholder="Search a movie...">
-    </div>
-    <button id="search-movie" type="submit" class="btn btn-primary mb-2">Search</button>
-  </form>
-  
-        <!-- <div id="add-movie">
+            <!-- Search Bar and Button -->
+            <form id="movie-form" id="form" class="form-inline">
+                <div class="form-group mx-sm-3 mb-2">
+                    <label for="movie-input" class="sr-only">Password</label>
+                    <input id="movie-input" type="text" class="form-control" id="inputPassword2" placeholder="Search a movie...">
+                </div>
+                <button id="search-movie" type="submit" class="btn btn-primary mb-2">Search</button>
+            </form>
+
+            <!-- <div id="add-movie">
             <form id="movie-form">
                 <label for="movie-input">Search a movie:</label>
                 <input type="text" id="movie-input">
@@ -81,22 +68,37 @@
             </form>
         </div> -->
 
-<!-- Results -->
-        <div id="results-div">
+            <!-- Trending Movies Button -->
+            <div id="top-movies">
+                <form id="movie-form">
+                    <input id="trending-movies" type="submit" value="What's Trending?">
+                </form>
+            </div>
 
+            <!-- User Favorites Button Pulls from Firebase -->
+            <div id="favorites">
+                <form id="movie-form">
+                    <input id="user-favorites" type="submit" value="Top User Searches">
+                </form>
+            </div>
+
+            <!-- Results -->
+            <div id="results">
+            </div>
+
+        </div>
+
+        <!-- Wishlist Container-->
+        <div id="wishlist-container">
         </div>
 
     </div>
 
-<!-- Wishlist Container-->
-    <div id="wishlist-container">
-    </div>
+    <!-- jQuery -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-</div>
-
-
-<!-- Linking script -->
-<script type="text/javascript" src="./assets/javascript/app.js"></script>
+    <!-- Script -->
+    <script type="text/javascript" src="./assets/javascript/app.js"></script>
 
 </body>
 

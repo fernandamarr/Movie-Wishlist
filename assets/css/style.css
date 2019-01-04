@@ -2,17 +2,17 @@ body {
     font-family: 'Chewy', cursive;
     background: #618685;
 }
-#jumbo{
+
+#jumbo {
     text-align: center;
     background: #4040a1;
     color: #fefbd8;
     font-family: 'Cabin Sketch', cursive;
 }
 
-#form{
+#form {
     text-align: center;
     background: lightgrey;
-    
 }
 
 h1 {
@@ -42,8 +42,6 @@ a {
     align-items: center;
 
     margin-bottom: 30px;
-
-    
 }
 
 #movie-input {
@@ -61,11 +59,11 @@ a {
     border-radius: 10px;
 }
 
-#search-movie:active{
-   
+#search-movie:active {
     transform: translateY(4px);
 }
-#search-movie{
+
+#search-movie {
     width: 100px;
     height: 35px;
     border: 1px solid black;
@@ -83,7 +81,6 @@ a {
     padding: 10px;
     box-shadow: 15px 15px 15px;
     margin-right: 20px;
-    
 }
 
 .result-img {
@@ -110,16 +107,12 @@ a {
     margin: 10px;
     height: 250px;
     position: relative;
-    
-
 }
 
 #main-container {
     display: flex;
-    background: #36486b;
-    
+    background: #36486b;  
     margin: 0 auto;
-
 }
 
 #search-container {
@@ -136,8 +129,7 @@ a {
     display: flex;
     flex-wrap: wrap;
     position: sticky;
-    top: 0;
-   
+    top: 0; 
 }
 
 .movie-wish {
