@@ -10,8 +10,10 @@
   <!-- Establishing character set -->
   <meta charset="UTF-8">
 
+  <!-- Linking BootStrap-->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
   <!-- Linking CSS -->
-  <link rel="stylesheet" type="text/css" href="./assets/css/reset.css">
   <link rel="stylesheet" type="text/css" href="./assets/css/style.css">
 
   <!-- Linking Google font -->
@@ -20,28 +22,73 @@
   <!-- Linking jQuery -->
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
+  <!-- Link to font -->
+  <link href="https://fonts.googleapis.com/css?family=Cabin+Sketch" rel="stylesheet">
+
 </head>
 
 <body>
+<!-- Header -->
+<!-- <div id="jumbo" class="jumbotron jumbotron-fluid">
+    <div class="container">
+      <h1 class="display-4"><u>Name of the Project</u></h1>
+      <p class="lead">Search Movies ............</p>
+    </div>
+  </div> -->
+
+  <!-- Search Bar and Button -->
+  <!-- <form id="movie-form" id="form" class="form-inline">
+    <div class="form-group mx-sm-3 mb-2">
+      <label for="movie-input" class="sr-only">Password</label>
+      <input id="movie-input" type="text" class="form-control" id="inputPassword2" placeholder="Search a movie...">
+    </div>
+    <button id="search-movie" type="submit" class="btn btn-primary mb-2">Search</button>
+  </form> -->
+  <!-- Header -->
+<div id="jumbo" class="jumbotron jumbotron-fluid">
+    <div class="container">
+      <h1 class="display-4"><u>Movie Wishlist</u></h1>
+      <p class="lead">An easier way for movie lovers.</p>
+    </div>
+  </div>
 
 <div id="main-container">
 
     <div id="search-container">
 
-        <div id="add-movie">
+        <!-- Header -->
+<!-- <div id="jumbo" class="jumbotron jumbotron-fluid">
+    <div class="container">
+      <h1 class="display-4"><u>Name of the Project</u></h1>
+      <p class="lead">Search Movies ............</p>
+    </div>
+  </div> -->
+
+  <!-- Search Bar and Button -->
+  <form id="movie-form" id="form" class="form-inline">
+    <div class="form-group mx-sm-3 mb-2">
+      <label for="movie-input" class="sr-only">Password</label>
+      <input id="movie-input" type="text" class="form-control" id="inputPassword2" placeholder="Search a movie...">
+    </div>
+    <button id="search-movie" type="submit" class="btn btn-primary mb-2">Search</button>
+  </form>
+  
+        <!-- <div id="add-movie">
             <form id="movie-form">
                 <label for="movie-input">Search a movie:</label>
                 <input type="text" id="movie-input">
                 <input id="search-movie" type="submit" value="Submit">
             </form>
-        </div>
+        </div> -->
 
+<!-- Results -->
         <div id="results-div">
 
         </div>
 
     </div>
 
+<!-- Wishlist Container-->
     <div id="wishlist-container">
     </div>
 
