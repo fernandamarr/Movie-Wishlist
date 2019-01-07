@@ -1,5 +1,9 @@
 $(document).ready(function () {
 
+// Hide the video player and its background on page load
+$("#video-player").hide();
+$("#video-background").hide();
+
     // Initialize Firebase
     var config = {
         apiKey: "AIzaSyCe-Thtn_khU__BOQVKdwfUn8VThnKbxzg",
@@ -19,7 +23,7 @@ $(document).ready(function () {
         e.preventDefault();
 
         var movie = $("#movie-input").val().trim();
-        var queryURL = "https://www.omdbapi.com/?s=" + movie + "&apikey=trilogy&limit=10";
+        var queryURL = "https://www.omdbapi.com/?s=" + movie + "&apikey=trilogy";
 
         $.ajax({
             url: queryURL,
@@ -42,17 +46,10 @@ $(document).ready(function () {
                 // Movie info, including title and release year
                 var movieResults = $("<div>");
                 movieResults.addClass("results");
-                movieResults.append("<div class='movie-info'><h2>" + results[i].Title + "</h2>");
-                movieResults.append("<h3>Year: " + results[i].Year + "</h3>");
+                movieResults.append("<div class='movie-info'><h2>" + results[i].Title + "</h2><h3>Year: " + results[i].Year + "</h3><a href='#' class='watch-trailer' id='" + results[i].imdbID + "' data-title='" + results[i].Title + "'>Watch Trailer</a><a href='https://www.imdb.com/title/" + results[i].imdbID + "'target='_blank'>Open on IMDb</a><button type='button' class='add-button' data-title='" + results[i].Title + "' data-year='" + results[i].Year + "' data-poster='" + results[i].Poster + "'>Add to Wish List</button>");
 
-                // Open movie in IMDb on new page
-                movieResults.append("<a href='https://www.imdb.com/title/" + results[i].imdbID + "'target='_blank'>Open on IMDb</a>");
-
-                // Add to Wishlist button, append all info related to that specific movie
-                movieResults.append("<button type='button' class='add-button' data-title='" + results[i].Title + "' data-year='" + response.Search[i].Year + "' data-poster='" + response.Search[i].Poster + "'>Add to Wish List</button>");
-
-                // Insert movie results at end of movie information
-                movieResults.append(movieImage);
+                // Insert movie results next to the movie information
+                movieResults.prepend(movieImage);
 
                 // Display on results div
                 $("#results").append(movieResults);
@@ -81,31 +78,14 @@ $(document).ready(function () {
             for (var i = 0; i < res.length; i++) {
 
                 // Movie poster
-                var trendingMoviesImg = "<img src='https://image.tmdb.org/t/p/w300/" + res[i].poster_path + "'</img>";
+                var trendingMoviesImg = "<img src='https://image.tmdb.org/t/p/w300/" + res[i].poster_path + "'>";
 
                 // Movie title
                 var trendingMovies = $("<div>");
                 trendingMovies.addClass("trend-results");
-                trendingMovies.append("<br><br><div class='trend-info'><h2>" + res[i].title + "</h2>");
+                trendingMovies.append("<div class='trend-info'><h2>" + res[i].title + "</h2><h3>Rating: " + res[i].vote_average + "</h3><h3>Release Date: " + res[i].release_date + "</h3><a href='https://www.imdb.com/title/" + res[i].id + "/'target='_blank'>Open on IMDb</a><button type='button' class='add-button' data-title='" + res[i].title + "'data-year='" + res[i].release_date + "'data-poster='https://image.tmdb.org/t/p/w300" + res[i].poster_path + "'>Add to Wish List</button>");
 
-                // Movie rating
-                trendingMovies.append("<h5>Rating: " + res[i].vote_average + "</h5>");
-
-                // Movie release date
-                trendingMovies.append("<h5>Release Date: " + res[i].release_date + "</h5>");
-
-                // ***** Fix This ***** -- doesn't open correct page
-                // Open movie in IMDb
-                trendingMovies.append("<a href='https://www.imdb.com/title/" + res[i].id + "/'target='_blank'>Open on IMDb</a><br>");
-
-                // *****Fix this ***** -- doesn't show poster when movie is added to wishlist
-                // Add to Wishlist button, append all info related to that specific movie
-                trendingMovies.append("<button type='button' class='add-button' data-title='" + res[i].title + "'data-year='" + res[i].release_date + "'data-poster='" + res[i].poster_path + "'>Add to Wish List</button><br>");
-
-                // Overview shows short movie description -- maybe do this on hover so screen doesn't look too crowded?
-                // trendingMovies.append("<h6>Overview: " + res[i].overview + "</h6><br>");
-
-                trendingMovies.append(trendingMoviesImg);
+                trendingMovies.prepend(trendingMoviesImg);
 
                 $("#results").append(trendingMovies);
             }
@@ -117,20 +97,83 @@ $(document).ready(function () {
         e.preventDefault();
 
         $("#results").empty("");
-        $("#trending-movies").empty("");
 
         database.ref().on("child_added", function (childSnapshot) {
-            var movieTitle = childSnapshot.val().title;
-            var movieYear = childSnapshot.val().year;
-            var moviePoster = childSnapshot.val().poster;
 
-            // add to wishlist button ** not sure if we want this since it continues to add to both wishlist container and results div
-            $("#results").prepend("<button type='button' class='add-button' data-title='" + movieTitle + "'data-year='" + movieYear + "'data-poster='" + moviePoster + "'>Add to Wish List</button><br>");
+        var movieTitle = childSnapshot.val().title;
+        var movieYear = childSnapshot.val().year;
+        var moviePoster = childSnapshot.val().poster;
 
-            // Show movie info from wishlist on page
-            $("#results").prepend("<br><h2>" + movieTitle + "</h2><br>" + "<h3> Year: " + movieYear + "</h3><br>" + "<img src=" + moviePoster + "</img><br>");
-        })
+        // Movie title
+        var userMovies = $("<div>");
+        userMovies.addClass("trend-results");
+        userMovies.append("<div class='trend-info'><h2>" + movieTitle + "</h2><h3>Release: " + movieYear + "</h3><button type='button' class='add-button' data-title='" + movieTitle + "'data-year='" + movieYear + "'data-poster='" + moviePoster + "'>Add to Wish List</button>");
+
+        userMovies.prepend("<img src='" + moviePoster + "'>");
+
+        $("#results").prepend(userMovies);
+
+        });
+
+    });
+
+    // Define behavior when a "trailer" link is clicked
+    $(document).on("click", ".watch-trailer", function(){
+
+    // Capture the IMDb ID
+    var clickedID = $(this).attr("id");
+    var clickedMovieTitle = $(this).attr("data-title");
+
+    // Use the MovieDB API to add trailers to each result
+    var MDBqueryURL = "https://api.themoviedb.org/3/movie/" + clickedID + "/videos?api_key=e3fddc668c4168ae60c8dd37482608e4";
+
+    // Return error message if the movie has no trailer available
+    function trailerError() {
+        swal({
+            title: "Sorry!",
+            text: "There is no trailer available for \"" + clickedMovieTitle + "\"",
+            icon: "error",
+            });
+    }
+
+    $.ajax({
+        url: MDBqueryURL,
+        method: "GET"
     })
+
+    .done(function(trailerResponse) {
+
+        if (trailerResponse.results.length > 0) {
+            $("#video-background").show();
+            $("#video-player").show();
+            $("#video-player").html("<iframe width='853' height='480' src='https://www.youtube.com/embed/" + trailerResponse.results[0].key + "' frameborder='0' allowfullscreen></iframe>'");
+            $("#video-player").append("<button id='close-button' class='close-trailer'>✘</button>");
+        }
+
+        else {
+            trailerError();
+        }
+        
+    })
+
+    .fail(function() {
+        trailerError();
+    })
+
+    .always(function(trailerResponse) {
+        console.log(trailerResponse);
+    });
+
+});
+
+// Close video on user input
+$(document).on("click", ".close-trailer", function(){
+
+    $("#video-background").hide();
+    $("#video-player").hide();
+    $("#video-player").html("");
+
+});
 
     // Variable to store movies in wishlist container
     var favoriteMovies = [];
@@ -161,7 +204,7 @@ $(document).ready(function () {
         database.ref().push({
             title: $(this).attr("data-title"),
             year: $(this).attr("data-year"),
-            poster: $(this).attr("data-poster"),
+            poster: $(this).attr("data-poster")
         });
     });
 
