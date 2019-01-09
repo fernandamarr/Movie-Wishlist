@@ -12,28 +12,12 @@
     <link href="https://fonts.googleapis.com/css?family=Chewy" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Cabin+Sketch" rel="stylesheet">
 
-<!-- Linking Sweet Alert script -->
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <!-- Linking Sweet Alert script -->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 </head>
 
 <body>
-    <!-- Header -->
-    <!-- <div id="jumbo" class="jumbotron jumbotron-fluid">
-    <div class="container">
-      <h1 class="display-4"><u>Name of the Project</u></h1>
-      <p class="lead">Search Movies ............</p>
-    </div>
-  </div> -->
-
-    <!-- Search Bar and Button -->
-    <!-- <form id="movie-form" id="form" class="form-inline">
-    <div class="form-group mx-sm-3 mb-2">
-      <label for="movie-input" class="sr-only">Password</label>
-      <input id="movie-input" type="text" class="form-control" id="inputPassword2" placeholder="Search a movie...">
-    </div>
-    <button id="search-movie" type="submit" class="btn btn-primary mb-2">Search</button>
-  </form> -->
 
     <!-- Header -->
     <div id="jumbo" class="jumbotron jumbotron-fluid">
@@ -43,47 +27,20 @@
         </div>
     </div>
 
+
+    <nav class="navbar navbar-light bg-light">
+        <form class="form-inline">
+            <input id="movie-input" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button id="search-movie" class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+          
+            <button id="trending-movies" class="btn btn-outline-success" type="button">What's Trending?</button>
+          <button id="user-favorites" class="btn btn-outline-success" type="button">Latest User Searches</button>
+        </form>
+    </nav>
+
     <div id="main-container">
+
         <div id="search-container">
-
-            <!-- Header -->
-            <!-- <div id="jumbo" class="jumbotron jumbotron-fluid">
-    <div class="container">
-      <h1 class="display-4"><u>Name of the Project</u></h1>
-      <p class="lead">Search Movies ............</p>
-    </div>
-  </div> -->
-
-            <!-- Search Bar and Button -->
-            <form id="movie-form" id="form" class="form-inline">
-                <div class="form-group mx-sm-3 mb-2">
-                    <label for="movie-input" class="sr-only">Password</label>
-                    <input id="movie-input" type="text" class="form-control" id="inputPassword2" placeholder="Search a movie...">
-                </div>
-                <button id="search-movie" type="submit" class="btn btn-primary mb-2">Search</button>
-            </form>
-
-            <!-- <div id="add-movie">
-            <form id="movie-form">
-                <label for="movie-input">Search a movie:</label>
-                <input type="text" id="movie-input">
-                <input id="search-movie" type="submit" value="Submit">
-            </form>
-        </div> -->
-
-            <!-- Trending Movies Button -->
-            <div id="top-movies">
-                <form id="movie-form">
-                    <input id="trending-movies" type="submit" value="What's Trending?">
-                </form>
-            </div>
-
-            <!-- User Favorites Button Pulls from Firebase -->
-            <div id="favorites">
-                <form id="movie-form">
-                    <input id="user-favorites" type="submit" value="Top User Searches">
-                </form>
-            </div>
 
             <!-- Results -->
             <div id="results">
@@ -97,9 +54,9 @@
 
     </div>
 
-<div id="video-player"></div>
+    <div id="video-player"></div>
 
-<div id="video-background" class="close-trailer"></div>
+    <div id="video-background" class="close-trailer"></div>
 
     <!-- jQuery -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
