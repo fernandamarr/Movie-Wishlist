@@ -1,34 +1,37 @@
 body {
     font-family: 'Chewy', cursive;
-    background: #f4f7f6;
+    background: #2F2FA2;
 }
 
 /* Header */
-#jumbo {
-    text-align: center;
-    background: url(../images/moviebgd.jpg);
-    background-size: cover;
-    background-position: center;
-    opacity: 0.6;
-    color: #fefbd8;
+.header {
+    margin-left: 20px;
+    background-color: #2F2FA2;
+    color: #F64C72;
     font-family: 'Cabin Sketch', cursive;
+}
+
+.jumbo-container {
+    display: inline-block;
+}
+
+/* .display-4 {
+    float: left;
+    bottom: 40px;
+} */
+
+h2 {
+    float: left;
+    padding-right: 80px;
+}
+
+.title {
+    float: right;
 }
 
 #form {
     text-align: center;
     background: lightgrey;
-}
-
-h1 {
-    font-size: 28px;
-}
-
-h2 {
-    font-size: 24px;
-}
-
-h3 {
-    font-size: 20px;
 }
 
 a {
@@ -48,13 +51,12 @@ a {
 }
 
 /* #movie-input {
-    margin: 10px 0 10px 0;
-    width: 200px;
+    margin-bottom: 10px;
 } */
 
 .add-button, .checkbox {
     padding: 2px 10px 2px 10px;
-    background-color: #29507e;
+    background-color: rgb(47, 116, 161);
     color: white;
     font-family: 'Chewy', cursive;
     font-size: 12pt;
@@ -76,7 +78,7 @@ a {
 } */
 
 #search-movie:hover {
-    background-color: #84b5ec;
+    background-color: rgb(47, 116, 161);
     color: #f4f7f6;
 }
 
@@ -87,15 +89,13 @@ a {
 }
 
 #trending-movies:hover, #user-favorites:hover {
-    background-color: #84b5ec;
+    background-color: rgb(47, 116, 161);
     color: #f4f7f6;
 }
 
 .btn {
     margin-right: 20px;
 }
-
-
 
 /* trending and top user search container */
 .results, .trend-results {
@@ -137,7 +137,7 @@ a {
 
 #main-container {
     display: flex;
-    background: #3c6ba0;  
+    background: #2F2FA2;  
     margin: 0 auto;
 }
 
