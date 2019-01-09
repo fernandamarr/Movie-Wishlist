@@ -1,5 +1,15 @@
 body {
     font-family: 'Chewy', cursive;
+
+    background: #2F2FA2;
+}
+/*There was a conflict here, i think it was resolved, but if not it was within header and jumbo.*/
+/* Header */
+.header {
+    margin-left: 20px;
+    background-color: #2F2FA2;
+    color: #F64C72;
+
     background: #f4f7f6;
 }
 
@@ -11,24 +21,31 @@ body {
     background-position: center;
     opacity: 0.6;
     color: #fefbd8;
+
     font-family: 'Cabin Sketch', cursive;
+}
+
+.jumbo-container {
+    display: inline-block;
+}
+
+/* .display-4 {
+    float: left;
+    bottom: 40px;
+} */
+
+h2 {
+    float: left;
+    padding-right: 80px;
+}
+
+.title {
+    float: right;
 }
 
 #form {
     text-align: center;
     background: lightgrey;
-}
-
-h1 {
-    font-size: 28px;
-}
-
-h2 {
-    font-size: 24px;
-}
-
-h3 {
-    font-size: 20px;
 }
 
 a {
@@ -47,10 +64,7 @@ a {
     /* margin-bottom: 30px; */
 }
 
-/* #movie-input {
-    margin: 10px 0 10px 0;
-    width: 200px;
-} */
+
 
 .add-button, .checkbox {
     padding: 2px 10px 2px 10px;
@@ -84,6 +98,7 @@ a {
 #trending-movies, #user-favorites {
     -webkit-transition-duration: 0.4s; /* Safari */
     transition-duration: 0.4s;
+
 }
 
 #trending-movies:hover, #user-favorites:hover {
@@ -94,7 +109,6 @@ a {
 .btn {
     margin-right: 20px;
 }
-
 
 
 /* trending and top user search container */
@@ -137,6 +151,7 @@ a {
 
 #main-container {
     display: flex;
+
     background: #3c6ba0;  
     margin: 0 auto;
 }
