@@ -1,8 +1,8 @@
 $(document).ready(function () {
 
-// Hide the video player and its background on page load
-$("#video-player").hide();
-$("#video-background").hide();
+    // Hide the video player and its background on page load
+    $("#video-player").hide();
+    $("#video-background").hide();
 
     // Initialize Firebase
     var config = {
@@ -48,7 +48,7 @@ $("#video-background").hide();
                 movieResults.addClass("results");
                 movieResults.append("<div class='movie-info'><h2>" + results[i].Title + "</h2><h3>Year: " + results[i].Year + "</h3><a href='#' class='watch-trailer' id='" + results[i].imdbID + "' data-title='" + results[i].Title + "'>Watch Trailer</a><a href='https://www.imdb.com/title/" + results[i].imdbID + "'target='_blank'>Open on IMDb</a><button type='button' class='add-button' data-title='" + results[i].Title + "' data-year='" + results[i].Year + "' data-poster='" + results[i].Poster + "'>Add to Wish List</button>");
 
-                // Insert movie results next to the movie information
+                // Insert movie results next to the image
                 movieResults.prepend(movieImage);
 
                 // Display on results div
@@ -61,7 +61,6 @@ $("#video-background").hide();
     $("#trending-movies").on("click", function (e) {
         e.preventDefault();
 
-        // *** shows 20 instead of 10 movies ***
         var queryURL = "https://api.themoviedb.org/3/trending/movie/day?api_key=e3fddc668c4168ae60c8dd37482608e4&limit=10>";
 
         $.ajax({
@@ -83,7 +82,7 @@ $("#video-background").hide();
                 // Movie title
                 var trendingMovies = $("<div>");
                 trendingMovies.addClass("trend-results");
-                trendingMovies.append("<div class='trend-info'><h2>" + res[i].title + "</h2><h3>Rating: " + res[i].vote_average + "</h3><h3>Release Date: " + res[i].release_date + "</h3><a href='https://www.imdb.com/title/" + res[i].id + "/'target='_blank'>Open on IMDb</a><button type='button' class='add-button' data-title='" + res[i].title + "'data-year='" + res[i].release_date + "'data-poster='https://image.tmdb.org/t/p/w300" + res[i].poster_path + "'>Add to Wish List</button>");
+                trendingMovies.append("<div class='trend-info'><h2>" + res[i].title + "</h2><h3>Rating: " + res[i].vote_average + "</h3><h3>Release Date: " + res[i].release_date + "</h3><button type='button' class='add-button' data-title='" + res[i].title + "'data-year='" + res[i].release_date + "'data-poster='https://image.tmdb.org/t/p/w300" + res[i].poster_path + "'>Add to Wish List</button>");
 
                 trendingMovies.prepend(trendingMoviesImg);
 
@@ -100,80 +99,77 @@ $("#video-background").hide();
 
         database.ref().on("child_added", function (childSnapshot) {
 
-        var movieTitle = childSnapshot.val().title;
-        var movieYear = childSnapshot.val().year;
-        var moviePoster = childSnapshot.val().poster;
+            var movieTitle = childSnapshot.val().title;
+            var movieYear = childSnapshot.val().year;
+            var moviePoster = childSnapshot.val().poster;
 
-        // Movie title
-        var userMovies = $("<div>");
-        userMovies.addClass("trend-results");
-        userMovies.append("<div class='trend-info'><h2>" + movieTitle + "</h2><h3>Release: " + movieYear + "</h3><button type='button' class='add-button' data-title='" + movieTitle + "'data-year='" + movieYear + "'data-poster='" + moviePoster + "'>Add to Wish List</button>");
+            // Movie title
+            var userMovies = $("<div>");
+            userMovies.addClass("trend-results");
+            userMovies.append("<div class='trend-info'><h2>" + movieTitle + "</h2><h3>Release: " + movieYear + "</h3><button type='button' class='add-button' data-title='" + movieTitle + "'data-year='" + movieYear + "'data-poster='" + moviePoster + "'>Add to Wish List</button>");
 
-        userMovies.prepend("<img src='" + moviePoster + "'>");
+            userMovies.prepend("<img src='" + moviePoster + "'>");
 
-        $("#results").prepend(userMovies);
-
+            $("#results").prepend(userMovies);
         });
-
     });
 
     // Define behavior when a "trailer" link is clicked
-    $(document).on("click", ".watch-trailer", function(){
+    $(document).on("click", ".watch-trailer", function () {
 
-    // Capture the IMDb ID
-    var clickedID = $(this).attr("id");
-    var clickedMovieTitle = $(this).attr("data-title");
+        // Capture the IMDb ID
+        var clickedID = $(this).attr("id");
+        var clickedMovieTitle = $(this).attr("data-title");
 
-    // Use the MovieDB API to add trailers to each result
-    var MDBqueryURL = "https://api.themoviedb.org/3/movie/" + clickedID + "/videos?api_key=e3fddc668c4168ae60c8dd37482608e4";
+        // Use the MovieDB API to add trailers to each result
+        var MDBqueryURL = "https://api.themoviedb.org/3/movie/" + clickedID + "/videos?api_key=e3fddc668c4168ae60c8dd37482608e4";
 
-    // Return error message if the movie has no trailer available
-    function trailerError() {
-        swal({
-            title: "Sorry!",
-            text: "There is no trailer available for \"" + clickedMovieTitle + "\"",
-            icon: "error",
+        // Return error message if the movie has no trailer available
+        function trailerError() {
+            swal({
+                title: "Sorry!",
+                text: "There is no trailer available for \"" + clickedMovieTitle + "\"",
+                icon: "error",
             });
-    }
-
-    $.ajax({
-        url: MDBqueryURL,
-        method: "GET"
-    })
-
-    .done(function(trailerResponse) {
-
-        if (trailerResponse.results.length > 0) {
-            $("#video-background").show();
-            $("#video-player").show();
-            $("#video-player").html("<iframe width='853' height='480' src='https://www.youtube.com/embed/" + trailerResponse.results[0].key + "' frameborder='0' allowfullscreen></iframe>'");
-            $("#video-player").append("<button id='close-button' class='close-trailer'>✘</button>");
         }
 
-        else {
-            trailerError();
-        }
-        
-    })
+        $.ajax({
+            url: MDBqueryURL,
+            method: "GET"
+        })
 
-    .fail(function() {
-        trailerError();
-    })
+            .done(function (trailerResponse) {
 
-    .always(function(trailerResponse) {
-        console.log(trailerResponse);
+                if (trailerResponse.results.length > 0) {
+                    $("#video-background").show();
+                    $("#video-player").show();
+                    $("#video-player").html("<iframe width='853' height='480' src='https://www.youtube.com/embed/" + trailerResponse.results[0].key + "' frameborder='0' allowfullscreen></iframe>'");
+                    $("#video-player").append("<button id='close-button' class='close-trailer'>✘</button>");
+                }
+
+                else {
+                    trailerError();
+                }
+            })
+
+            .fail(function () {
+                trailerError();
+            })
+
+            .always(function (trailerResponse) {
+                console.log(trailerResponse);
+            });
+
     });
 
-});
+    // Close video on user input
+    $(document).on("click", ".close-trailer", function () {
 
-// Close video on user input
-$(document).on("click", ".close-trailer", function(){
+        $("#video-background").hide();
+        $("#video-player").hide();
+        $("#video-player").html("");
 
-    $("#video-background").hide();
-    $("#video-player").hide();
-    $("#video-player").html("");
-
-});
+    });
 
     // Variable to store movies in wishlist container
     var favoriteMovies = [];
