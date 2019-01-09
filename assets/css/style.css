@@ -1,13 +1,27 @@
 body {
     font-family: 'Chewy', cursive;
+
     background: #2F2FA2;
 }
-
+/*There was a conflict here, i think it was resolved, but if not it was within header and jumbo.*/
 /* Header */
 .header {
     margin-left: 20px;
     background-color: #2F2FA2;
     color: #F64C72;
+
+    background: #f4f7f6;
+}
+
+/* Header */
+#jumbo {
+    text-align: center;
+    background: url(../images/moviebgd.jpg);
+    background-size: cover;
+    background-position: center;
+    opacity: 0.6;
+    color: #fefbd8;
+
     font-family: 'Cabin Sketch', cursive;
 }
 
@@ -50,13 +64,11 @@ a {
     /* margin-bottom: 30px; */
 }
 
-/* #movie-input {
-    margin-bottom: 10px;
-} */
+
 
 .add-button, .checkbox {
     padding: 2px 10px 2px 10px;
-    background-color: rgb(47, 116, 161);
+    background-color: #29507e;
     color: white;
     font-family: 'Chewy', cursive;
     font-size: 12pt;
@@ -78,7 +90,7 @@ a {
 } */
 
 #search-movie:hover {
-    background-color: rgb(47, 116, 161);
+    background-color: #84b5ec;
     color: #f4f7f6;
 }
 
@@ -86,16 +98,18 @@ a {
 #trending-movies, #user-favorites {
     -webkit-transition-duration: 0.4s; /* Safari */
     transition-duration: 0.4s;
+
 }
 
 #trending-movies:hover, #user-favorites:hover {
-    background-color: rgb(47, 116, 161);
+    background-color: #84b5ec;
     color: #f4f7f6;
 }
 
 .btn {
     margin-right: 20px;
 }
+
 
 /* trending and top user search container */
 .results, .trend-results {
@@ -137,7 +151,8 @@ a {
 
 #main-container {
     display: flex;
-    background: #2F2FA2;  
+
+    background: #3c6ba0;  
     margin: 0 auto;
 }
 
