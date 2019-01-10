@@ -1,93 +1,121 @@
+/* body of website */
 body {
-    font-family: 'Chewy', cursive;
-    background: #618685;
+    font-family: 'Roboto Slab', serif;
+    background-image: linear-gradient(#0B0C10, #1F2833, rgb(174, 175, 177));
+    background-attachment:fixed;
+    height:100%;
 }
 
-#jumbo {
-    text-align: center;
-    background: #4040a1;
-    color: #fefbd8;
-    font-family: 'Cabin Sketch', cursive;
+/* Header */
+.header {
+    margin-left: 20px;
+    font-family: 'Oswald', sans-serif;
+    color: #66FCF1;
+    
 }
 
-#form {
-    text-align: center;
-    background: lightgrey;
-}
-
+/* "Movie Wishlist" title */
 h1 {
-    font-size: 28px;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 7em;
 }
 
-h2 {
-    font-size: 24px;
+/* Navigation bar buttons */
+.navbar {
+    padding: 20px;
+    display: inline-block;
+    
+    top: 0;
+    margin-bottom: 20px;
+    position: -webkit-sticky;
+    position: sticky;
+    background: #1F2833;
+    border-bottom: 2px solid #66FCF1;
+    width: 100%;
 }
 
-h3 {
-    font-size: 20px;
-}
-
-a {
-    color: #4040a1;
-    text-decoration: none;
-}
-
-#search-container {
-    margin: 10px 0 10px 20px;
-}
-
-#movie-form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    margin-bottom: 30px;
-}
-
-#movie-input {
-    margin: 10px 0 10px 0;
-    width: 200px;
-}
-
+/* Add to Wishlist button and checkbox on wishlist movies */
 .add-button, .checkbox {
     padding: 2px 10px 2px 10px;
-    background-color: #4040a1;
-    color: white;
-    font-family: 'Chewy', cursive;
+    background-color: #0B0C10;
+    color: #ffffff;
     font-size: 12pt;
-    border: 1px solid lightgray;
+    border: 2px solid #45A29E;
     border-radius: 10px;
 }
 
-#search-movie:active {
+.add-button:hover, .checkbox:hover {
+    color: #0B0C10;
+    background-color: #66FCF1;
+}
+
+
+
+/* Transform buttons on click */
+#search-movie:active, #trending-movies:active, #user-favorites:active {
     transform: translateY(4px);
 }
 
-#search-movie {
-    width: 100px;
-    height: 35px;
-    border: 1px solid black;
-    border-radius: 25px;
-    background: #fefbd8;
-    color: black;
+/* Buttons on navbar */
+#search-movie, #trending-movies, #user-favorites {
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    border: 2px solid #45A29E;
+    border-radius: 10px;
+    color: #ffffff;
+    background-color: #0B0C10;
+    margin-bottom: 10px;
 }
 
-.results, .trend-results {
-    display: flex;
-    flex-wrap: wrap;
-    border: 1px solid black;
-    margin-bottom: 20px;
-    background: white;
-    padding: 10px;
-    box-shadow: 15px 15px 15px;
+#search-movie:hover, #trending-movies:hover, #user-favorites:hover {
+    background-color: #66FCF1;
+    color: #0B0C10;
+}
+
+.btn {
     margin-right: 20px;
+}
+
+/* Trending and latest user search container */
+.results, .trend-results {
+    -webkit-align-content: center;
+    align-content: center;
+    flex-wrap: wrap;
+    padding: 5px;
+    margin: 10px 10px 20px 20px;
+    display: inline-block;
+    vertical-align: top;
+    border: 2px solid #45A29E;
+    background: #dddedf;
+}
+
+/* Poster image for Search results */
+.results-img {
+    width: 65%;
+    height: auto;
+    -webkit-align-content: center;
+    align-content: center;
+    flex-wrap: wrap;
+}
+
+/* Poster image for Latest User Favorites */
+.user-movies {
+    width: 65%;
+    height: auto;
+    -webkit-align-content: center;
+    align-content: center;
+    flex-wrap: wrap; 
 }
 
 .result-img {
     height: 250px;
     margin: 10px 10px 10px 0;
     box-shadow: 8px 8px 8px;
-    /* padding: 5px; */
+}
+
+#search-label{
+    color: #45A29E;
 }
 
 .movie-info, .trend-info {
@@ -99,19 +127,18 @@ a {
     padding-left: 10px; 
 }
 
-.add-button {
-    width: 140px;
+#movie-input{
+    margin-bottom: 10px;
 }
-
 .wishlist {
     margin: 10px;
     height: 250px;
     position: relative;
+    
 }
 
 #main-container {
     display: flex;
-    background: #36486b;  
     margin: 0 auto;
 }
 
@@ -121,14 +148,13 @@ a {
 
 #wishlist-container {
     flex: 1;
-    background-image: url("../images/linedpaper.png");
+    background-image: linear-gradient(#C5C6C7, #45A29E, #66FCF1);
     border: 2px solid black;
-    /* border-bottom: 2px solid lightgray; */
     padding: 10px;
-    height: 100%;
     display: flex;
     flex-wrap: wrap;
     position: sticky;
+    width: 100%;
     top: 0; 
 }
 
@@ -137,12 +163,14 @@ a {
     box-shadow: 8px 8px 8px;
 }
 
+/* Wishlist checkbox */
 .checkbox {
     position: absolute;
     bottom: 5px;
     right: 5px;
 }
 
+/* Movie Trailer */
 #video-player {
     position: fixed;
     width: 853px;
