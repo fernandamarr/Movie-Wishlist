@@ -1,5 +1,18 @@
 body {
     font-family: 'Chewy', cursive;
+    background: #618685;
+}
+
+#jumbo {
+    text-align: center;
+    background: #4040a1;
+    color: #fefbd8;
+    font-family: 'Cabin Sketch', cursive;
+}
+
+#form {
+    text-align: center;
+    background: lightgrey;
 }
 
 h1 {
@@ -15,7 +28,7 @@ h3 {
 }
 
 a {
-    color: #008CBA;
+    color: #4040a1;
     text-decoration: none;
 }
 
@@ -26,17 +39,19 @@ a {
 #movie-form {
     display: flex;
     flex-direction: column;
-    align-items: start;
+    align-items: center;
+
     margin-bottom: 30px;
 }
 
 #movie-input {
     margin: 10px 0 10px 0;
+    width: 200px;
 }
 
-#search-movie, .add-button, .checkbox {
+.add-button, .checkbox {
     padding: 2px 10px 2px 10px;
-    background-color: #008CBA;
+    background-color: #4040a1;
     color: white;
     font-family: 'Chewy', cursive;
     font-size: 12pt;
@@ -44,22 +59,44 @@ a {
     border-radius: 10px;
 }
 
-.results {
+#search-movie:active {
+    transform: translateY(4px);
+}
+
+#search-movie {
+    width: 100px;
+    height: 35px;
+    border: 1px solid black;
+    border-radius: 25px;
+    background: #fefbd8;
+    color: black;
+}
+
+.results, .trend-results {
     display: flex;
     flex-wrap: wrap;
+    border: 1px solid black;
+    margin-bottom: 20px;
+    background: white;
+    padding: 10px;
+    box-shadow: 15px 15px 15px;
+    margin-right: 20px;
 }
 
 .result-img {
     height: 250px;
     margin: 10px 10px 10px 0;
+    box-shadow: 8px 8px 8px;
+    /* padding: 5px; */
 }
 
-.movie-info {
-    height: 150px;
+.movie-info, .trend-info {
+    height: 300px;
     margin-top: 10px;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
+    padding-left: 10px; 
 }
 
 .add-button {
@@ -74,6 +111,8 @@ a {
 
 #main-container {
     display: flex;
+    background: #36486b;  
+    margin: 0 auto;
 }
 
 #search-container {
@@ -83,22 +122,51 @@ a {
 #wishlist-container {
     flex: 1;
     background-image: url("../images/linedpaper.png");
-    border-left: 2px solid lightgray;
-    border-bottom: 2px solid lightgray;
+    border: 2px solid black;
+    /* border-bottom: 2px solid lightgray; */
     padding: 10px;
     height: 100%;
     display: flex;
     flex-wrap: wrap;
     position: sticky;
-    top: 0;
+    top: 0; 
 }
 
 .movie-wish {
     height: 250px;
+    box-shadow: 8px 8px 8px;
 }
 
 .checkbox {
     position: absolute;
     bottom: 5px;
     right: 5px;
+}
+
+#video-player {
+    position: fixed;
+    width: 853px;
+    height: 480px;
+    top: 50%;
+    left: 50%;
+    margin-top: -240px;
+    margin-left: -426px;
+    z-index: 100;
+}
+
+#video-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    opacity: 0.9;
+    z-index: 99;
+}
+
+#close-button {
+    position: absolute;
+    top: -30px;
+    right: 0;
 }
