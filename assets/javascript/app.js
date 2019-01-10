@@ -46,7 +46,7 @@ $(document).ready(function () {
                 // Movie info, including title and release year
                 var movieResults = $("<div>");
                 movieResults.addClass("results");
-                movieResults.append("<div class='movie-info'><h2>" + results[i].Title + "</h2><h3>Year: " + results[i].Year + "</h3><a href='#' class='watch-trailer' id='" + results[i].imdbID + "' data-title='" + results[i].Title + "'>Watch Trailer</a><a href='https://www.imdb.com/title/" + results[i].imdbID + "'target='_blank'>Open on IMDb</a><button type='button' class='add-button' data-title='" + results[i].Title + "' data-year='" + results[i].Year + "' data-poster='" + results[i].Poster + "'>Add to Wish List</button>");
+                movieResults.append("<div class='movie-info'><h3>" + results[i].Title + "</h3><h4>Year: " + results[i].Year + "</h4><a href='#' class='watch-trailer' id='" + results[i].imdbID + "' data-title='" + results[i].Title + "'>Watch Trailer</a><a href='https://www.imdb.com/title/" + results[i].imdbID + "'target='_blank'>Open on IMDb</a><button type='button' class='add-button' data-title='" + results[i].Title + "' data-year='" + results[i].Year + "' data-poster='" + results[i].Poster + "'>Add to Wish List</button>");
 
                 // Insert movie results next to the image
                 movieResults.prepend(movieImage);
@@ -77,12 +77,12 @@ $(document).ready(function () {
             for (var i = 0; i < res.length; i++) {
 
                 // Movie poster
-                var trendingMoviesImg = "<img src='https://image.tmdb.org/t/p/w300/" + res[i].poster_path + "'>";
+                var trendingMoviesImg = "<img class='posterimg'  src='https://image.tmdb.org/t/p/w200/" + res[i].poster_path + "'>";
 
                 // Movie title
                 var trendingMovies = $("<div>");
                 trendingMovies.addClass("trend-results");
-                trendingMovies.append("<div class='trend-info'><h2>" + res[i].title + "</h2><h3>Rating: " + res[i].vote_average + "</h3><h3>Release Date: " + res[i].release_date + "</h3><button type='button' class='add-button' data-title='" + res[i].title + "'data-year='" + res[i].release_date + "'data-poster='https://image.tmdb.org/t/p/w300" + res[i].poster_path + "'>Add to Wish List</button>");
+                trendingMovies.append("<div class='trend-info'><h3>" + res[i].title + "</h3><h4>Rating: " + res[i].vote_average + "</h4><h4>Release Date: " + res[i].release_date + "</h4><button type='button' class='add-button' data-title='" + res[i].title + "'data-year='" + res[i].release_date + "'data-poster='https://image.tmdb.org/t/p/w200" + res[i].poster_path + "'>Add to Wish List</button>");
 
                 trendingMovies.prepend(trendingMoviesImg);
 
@@ -106,9 +106,9 @@ $(document).ready(function () {
             // Movie title
             var userMovies = $("<div>");
             userMovies.addClass("trend-results");
-            userMovies.append("<div class='trend-info'><h2>" + movieTitle + "</h2><h3>Release: " + movieYear + "</h3><button type='button' class='add-button' data-title='" + movieTitle + "'data-year='" + movieYear + "'data-poster='" + moviePoster + "'>Add to Wish List</button>");
+            userMovies.append("<div class='trend-info'><h3>" + movieTitle + "</h3><h4>Release: " + movieYear + "</h4><button type='button' class='add-button' data-title='" + movieTitle + "'data-year='" + movieYear + "'data-poster='" + moviePoster + "'>Add to Wish List</button>");
 
-            userMovies.prepend("<img src='" + moviePoster + "'>");
+            userMovies.prepend("<img class='user-movies' src='" + moviePoster + "'>");
 
             $("#results").prepend(userMovies);
         });
@@ -162,7 +162,7 @@ $(document).ready(function () {
 
     });
 
-    // Close video on user input
+    // Close video on click
     $(document).on("click", ".close-trailer", function () {
 
         $("#video-background").hide();

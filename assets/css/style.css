@@ -1,133 +1,105 @@
+/* body of website */
 body {
-    font-family: 'Chewy', cursive;
-
-    background: #2F2FA2;
+    font-family: 'Roboto Slab', serif;
+    background-image: linear-gradient(#0B0C10, #1F2833, rgb(174, 175, 177));
 }
-/*There was a conflict here, i think it was resolved, but if not it was within header and jumbo.*/
+
 /* Header */
 .header {
     margin-left: 20px;
-    background-color: #2F2FA2;
-    color: #F64C72;
-
-    background: #f4f7f6;
+    font-family: 'Oswald', sans-serif;
+    color: #66FCF1;
 }
 
-/* Header */
-#jumbo {
-    text-align: center;
-    background: url(../images/moviebgd.jpg);
-    background-size: cover;
-    background-position: center;
-    opacity: 0.6;
-    color: #fefbd8;
-
-    font-family: 'Cabin Sketch', cursive;
-}
-
-.jumbo-container {
-    display: inline-block;
-}
-
-/* .display-4 {
-    float: left;
-    bottom: 40px;
-} */
-
-h2 {
+/* "Movie Wishlist" title */
+h1 {
     float: left;
     padding-right: 80px;
 }
 
-.title {
-    float: right;
+/* Navigation bar buttons */
+.navbar {
+    padding: 20px;
+    display: inline-block;
+    margin-top: 70px;
+    margin-bottom: 20px;
+    position: sticky;
 }
 
-#form {
-    text-align: center;
-    background: lightgrey;
-}
-
-a {
-    color: #4040a1;
-    text-decoration: none;
-}
-
-#search-container {
-    margin: 10px 0 10px 20px;
-}
-
-#movie-form {
-    display: inline;
-    /* flex-direction: column; */
-    /* align-items: center; */
-    /* margin-bottom: 30px; */
-}
-
-
-
+/* Add to Wishlist button and checkbox on wishlist movies */
 .add-button, .checkbox {
     padding: 2px 10px 2px 10px;
-    background-color: #29507e;
-    color: white;
-    font-family: 'Chewy', cursive;
+    background-color: #0B0C10;
+    color: #ffffff;
     font-size: 12pt;
-    border: 1px solid lightgray;
+    border: 2px solid #45A29E;
     border-radius: 10px;
 }
 
-#search-movie:active {
+.add-button:hover, .checkbox:hover {
+    color: #0B0C10;
+    background-color: #66FCF1;
+}
+
+/* Transform buttons on click */
+#search-movie:active, #trending-movies:active, #user-favorites:active {
     transform: translateY(4px);
 }
 
-/* #search-movie {
-    width: 100px;
-    height: 35px;
-    border: 1px solid black;
-    border-radius: 25px;
-    background: #fefbd8;
-    color: black;
-} */
-
-#search-movie:hover {
-    background-color: #84b5ec;
-    color: #f4f7f6;
-}
-
-/* trending and user faves buttons */
-#trending-movies, #user-favorites {
+/* Buttons on navbar */
+#search-movie, #trending-movies, #user-favorites {
     -webkit-transition-duration: 0.4s; /* Safari */
     transition-duration: 0.4s;
-
+    border: 2px solid #45A29E;
+    border-radius: 10px;
+    color: #ffffff;
+    background-color: #0B0C10;
 }
 
-#trending-movies:hover, #user-favorites:hover {
-    background-color: #84b5ec;
-    color: #f4f7f6;
+#search-movie:hover, #trending-movies:hover, #user-favorites:hover {
+    background-color: #66FCF1;
+    color: #0B0C10;
 }
 
 .btn {
     margin-right: 20px;
 }
 
-
-/* trending and top user search container */
+/* Trending and latest user search container */
 .results, .trend-results {
-    display: flex;
+    -webkit-align-content: center;
+    align-content: center;
     flex-wrap: wrap;
-    border: 1px solid black;
-    margin-bottom: 20px;
-    background: white;
-    padding: 10px;
-    box-shadow: 15px 15px 15px;
-    margin-right: 20px;
+    padding: 5px;
+    margin: 10px 10px 20px 20px;
+    display: inline-block;
+    vertical-align: top;
+    border: 2px solid #45A29E;
+    background: #dddedf;
+}
+
+/* Poster image for Search results */
+.results-img {
+    width: 65%;
+    height: auto;
+    -webkit-align-content: center;
+    align-content: center;
+    flex-wrap: wrap;
+}
+
+/* Poster image for Latest User Favorites */
+.user-movies {
+    width: 65%;
+    height: auto;
+    -webkit-align-content: center;
+    align-content: center;
+    flex-wrap: wrap; 
 }
 
 .result-img {
     height: 250px;
     margin: 10px 10px 10px 0;
     box-shadow: 8px 8px 8px;
-    /* padding: 5px; */
 }
 
 .movie-info, .trend-info {
@@ -139,10 +111,6 @@ a {
     padding-left: 10px; 
 }
 
-.add-button {
-    width: 140px;
-}
-
 .wishlist {
     margin: 10px;
     height: 250px;
@@ -151,8 +119,6 @@ a {
 
 #main-container {
     display: flex;
-
-    background: #3c6ba0;  
     margin: 0 auto;
 }
 
@@ -162,11 +128,11 @@ a {
 
 #wishlist-container {
     flex: 1;
-    background-image: url("../images/linedpaper.png");
+    background-image: linear-gradient(#C5C6C7, #45A29E, #66FCF1);
     border: 2px solid black;
-    /* border-bottom: 2px solid lightgray; */
     padding: 10px;
     height: 100%;
+    margin-right: 10px;
     display: flex;
     flex-wrap: wrap;
     position: sticky;
@@ -178,12 +144,14 @@ a {
     box-shadow: 8px 8px 8px;
 }
 
+/* Wishlist checkbox */
 .checkbox {
     position: absolute;
     bottom: 5px;
     right: 5px;
 }
 
+/* Movie Trailer */
 #video-player {
     position: fixed;
     width: 853px;
